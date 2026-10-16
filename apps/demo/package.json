@@ -1,0 +1,17 @@
+{
+  "name": "@tiny-agent/demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsdown"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tiny-agent/agent": "workspace:*",
+    "@tiny-agent/openai-provider": "workspace:*"
+  }
+}

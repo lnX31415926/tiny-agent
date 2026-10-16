@@ -1,0 +1,14 @@
+{
+  "name": "@tiny-agent/agent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "types": "dist/index.d.mts",
+  "module": "dist/index.mjs",
+  "scripts": {
+    "build": "tsdown"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
