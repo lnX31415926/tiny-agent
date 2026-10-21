@@ -1,27 +1,23 @@
 <template>
-  <div class="msg" :class="msg.role">
-    <div class="msg-content">{{ msg.content }}</div>
-  </div>
+<div class="msg-item" :class="msg.role">
+  <span>{{ msg.content }}</span>
+</div>
 </template>
 <script setup lang="ts">
-import type { ChatItem } from '@/chat/types'
-defineProps<{ msg: ChatItem }>()
+import type { ChatMessage } from '@/stores/chat'
+defineProps<{msg: ChatMessage}>()
 </script>
 <style scoped>
-.msg {
-  margin: 8px 0;
-  padding: 10px 14px;
-  max-width: 70%;
+.msg-item{
+  margin:8px 0;
+  padding:8px 12px;
 }
-.user {
-  margin-left: auto;
-  background: #409eff;
-  color: white;
-  border-radius: 12px 12px 2px 12px;
+.user{
+  text-align:right;
+  background:#e6f7ff;
 }
-.assistant {
-  margin-right: auto;
-  background: #f0f0f0;
-  border-radius: 12px 12px 12px 2px;
+.assistant{
+  text-align:left;
+  background:#f5f5f5;
 }
 </style>

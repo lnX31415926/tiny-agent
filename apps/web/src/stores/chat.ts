@@ -1,16 +1,22 @@
 import { defineStore } from 'pinia'
-import type { ChatItem } from '@/chat/types'
-
+export interface ChatMessage {
+  id: string
+  role: 'user' | 'assistant'
+  content: string
+}
 export const useChatStore = defineStore('chat', {
   state: () => ({
-    messageList: [] as ChatItem[],
+    messageList: [] as ChatMessage[],
   }),
   actions: {
-    addMessage(msg: ChatItem) {
+    addMessage(msg: ChatMessage) {
       this.messageList.push(msg)
     },
-    clearChat() {
-      this.messageList = []
+    appendMessageContent(msgId: string, text: string) {
+      const target = this.messageList.find((m) => m.id === msgId)
+      if (target) {
+        target.content += text
+      }
     },
   },
 })
