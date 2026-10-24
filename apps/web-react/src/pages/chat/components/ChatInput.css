@@ -1,0 +1,12 @@
+.input-wrap {
+  display: flex;
+  gap: 8px;
+  padding:12px;
+}
+textarea {
+  flex: 1;
+  padding:8px;
+}
+button {
+  padding:0 16px;
+}

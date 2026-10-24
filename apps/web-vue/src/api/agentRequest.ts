@@ -2,7 +2,36 @@ const apiBaseUrl = 'http://localhost:3000'
 interface AiCompletionInput {
   prompt: string
 }
-
+/**
+ * 单条 SSE 分片转换
+ * @param chunkStr 单条原始字符串：'{"text":"你"}' 或者 '{}'
+ * @returns
+ *  输入 {"text":"你"} → { type: "text", value: "你" }
+ *  输入 {} → { type: "done", value: "{}" }
+ */
+export function transformSingleChunk(chunkStr: string): { type: string; value: string } | null {
+  try {
+    const data = JSON.parse(chunkStr)
+    // 空对象标记结束
+    if (Object.keys(data).length === 0) {
+      return {
+        type: 'done',
+        value: '',
+      }
+    }
+    // 有 text 字段
+    if (typeof data.text === 'string') {
+      return {
+        type: 'text',
+        value: data.text,
+      }
+    }
+    return null
+  } catch (err) {
+    console.warn('单条分片解析失败', chunkStr, err)
+    return null
+  }
+}
 export async function requestCompletionStream(
   input: AiCompletionInput,
   onChunk: (chunk: string) => void,

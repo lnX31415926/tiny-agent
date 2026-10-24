@@ -5,7 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "tsdown"
+    "build": "tsdown",
+    "dev:api": "pnpm -F @tiny-agent/api start:dev",
+    "dev:vue": "pnpm -F @tiny-agent/web-vue dev",
+    "dev:react": "pnpm -F @tiny-agent/web-react dev"
   },
   "keywords": [],
   "author": "",

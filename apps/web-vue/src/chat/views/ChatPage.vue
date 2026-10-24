@@ -2,7 +2,7 @@
   <div class="chat-page">
     <h2>AI对话</h2>
     <div class="msg-container">
-      <ChatMessage v-for="item in chatStore.messageList" :key="item.id" :msg="item"/>
+      <ChatMessage v-for="item in chatStore.messageList" :key="item.id" :msg="item" />
     </div>
     <ChatInput @send="onSendMessage" />
   </div>
@@ -26,7 +26,7 @@ async function typeWriter(msgId: string, fullStr: string, speed = 30) {
   for (let i = 0; i < fullStr.length; i++) {
     const char = fullStr[i] as string
     chatStore.appendMessageContent(msgId, char)
-    await new Promise(resolve => setTimeout(resolve, speed))
+    await new Promise((resolve) => setTimeout(resolve, speed))
   }
 }
 
@@ -35,14 +35,14 @@ const onSendMessage = async (text: string) => {
   chatStore.addMessage({
     id: uuidv4(),
     role: 'user',
-    content: text
+    content: text,
   })
   // 创建空AI消息
   const aiMsgId = uuidv4()
   chatStore.addMessage({
     id: aiMsgId,
     role: 'assistant',
-    content: ''
+    content: '',
   })
 
   let isTyping = false
@@ -74,7 +74,7 @@ const onSendMessage = async (text: string) => {
 .chat-page {
   width: 100%;
   height: 100vh;
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 .msg-container {
